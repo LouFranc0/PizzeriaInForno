@@ -1,26 +1,24 @@
-﻿
-
-namespace PizzeriaInForno.Models
+﻿namespace PizzeriaInForno.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
+	using System.ComponentModel.DataAnnotations;
+	using System.ComponentModel.DataAnnotations.Schema;
+	using System.Data.Entity.Spatial;
 
-    [Table("OrdiniArticoli")]
-    public partial class OrdiniArticoli
-    {
-        public int Id { get; set; }
+	[Table("OrdiniArticoli")]
+	public partial class OrdiniArticoli
+	{
+		public int ID { get; set; }
 
-        public int OrdineId { get; set; }
+		public int? IDOrdine { get; set; }
 
-        public int ArticoloId { get; set; }
+		public int? IDArticolo { get; set; }
 
-        public int Quantita { get; set; }
+		public int Quantita { get; set; }
 
-        public virtual Articoli Articoli { get; set; }
+		public virtual Articoli Articoli { get; set; }
 
-        public virtual Ordini Ordini { get; set; }
-    }
+		public virtual Ordini Ordini { get; set; }
+	}
 }

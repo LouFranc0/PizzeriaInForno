@@ -1,33 +1,22 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿﻿<main>
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-danger text-center" role="alert">
+            @TempData["Message"]
+        </div>
+    }
 
-<main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-    </section>
-
-    <div class="row">
-        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-            <h2 id="gettingStartedTitle">Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="librariesTitle">
-            <h2 id="librariesTitle">Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </section>
+    <div id="sfondo" class="d-flex justify-content-center align-items-center rounded-4">
+        <div class="bg bg-black bg-opacity-75 p-5 rounded-5">
+            <h1 class="text-white text-center">In Forno Ristoria Pizzorante!</h1>
+            <h3 class="text-white text-center">Se non ci vieni sei ignorante...</h3>
+        </div>
     </div>
 </main>
+<style>
+    #sfondo {
+        background-image: url("https://www.today.it/~media/horizontal-hi/56919187605090/la-pizza-napoletana-cotta-al-forno-a-legna-fabrizio-pullara.jpg");
+        height: 70vh;
+        background-size: cover;
+    }
+</style>

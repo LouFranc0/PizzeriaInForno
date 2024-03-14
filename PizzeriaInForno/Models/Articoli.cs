@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace PizzeriaInForno.Models
+﻿namespace PizzeriaInForno.Models
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
 
     [Table("Articoli")]
     public partial class Articoli
@@ -17,23 +14,24 @@ namespace PizzeriaInForno.Models
         {
             OrdiniArticoli = new HashSet<OrdiniArticoli>();
         }
-        // ricorda di aggiungere key nel caso non funzioni nulla a tutti i model
-        public int Id { get; set; }
+
+        public int ID { get; set; }
 
         [Required]
+        [StringLength(255)]
         public string Nome { get; set; }
-
-        [Required]
-        public string Foto { get; set; }
 
         public decimal Prezzo { get; set; }
 
-        [Required]
-        [StringLength(10)]
-        public string TempoConsegna { get; set; }
+        [StringLength(255)]
+        public string Descrizione { get; set; }
 
-        [Required]
-        [StringLength(10)]
+        [StringLength(255)]
+        public string Immagine { get; set; }
+
+        public int? TempoConsegna { get; set; }
+
+        [StringLength(255)]
         public string Ingredienti { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

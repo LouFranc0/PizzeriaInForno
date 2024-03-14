@@ -1,0 +1,42 @@
+﻿﻿@model PizzeriaInForno.Models.Articoli
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h2 class="card-title text-danger">Elimina</h2>
+        <h3 class="card-subtitle mb-2 text-muted">Sei sicuro di voler eliminare il prodotto?</h3>
+
+        <div class="card-text">
+            <h4 class="text-white">Dettagli</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Nome)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Prezzo)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Prezzo)
+                </dd>
+                <!-- Aggiungi altri campi se necessario -->
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-outline-secondary" })
+                </div>
+            }
+        </div>
+    </div>
+</div>

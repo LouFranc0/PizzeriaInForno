@@ -1,0 +1,63 @@
+﻿﻿@model IEnumerable<PizzeriaInForno.Models.Articoli>
+
+@{
+    ViewBag.Title = "Articoli";
+}
+
+@using System.Web.Security
+@{
+    var authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+    var roles = Roles.GetRolesForUser();
+}
+
+<h1 class="mb-5 text-center fw-bold">Articoli</h1>
+@if (authCookie != null)
+{
+    if (roles.Contains("Admin"))
+    {
+        <div class="m-auto w-50 text-center">
+            @Html.ActionLink("Aggiungi nuovo articolo", "Create", null, new { @class = "btn btn-primary mb-3" })
+        </div>
+    }
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-3 my-2">
+            <div class="card h-100 shadow bg-body-secondary rounded">
+                <img src="@item.Immagine" class="card-img-top img-fluid" alt="Immagine Articolo" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Nome</h5>
+                    <p class="card-text">@item.Descrizione</p>
+                    <p class="card-text fw-bold">Prezzo: @item.Prezzo</p>
+                </div>
+                @if (authCookie != null && roles.Contains("Admin"))
+                {
+                    <div class="card-footer">
+                        @Html.ActionLink("Modifica", "Edit", new { id = item.ID }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Elimina", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+                    </div>
+                }
+                else if (authCookie != null && roles.Contains("User"))
+                {
+                    <div class="card-footer">
+                        @using (Html.BeginForm("AggiungiAlCarrello", "Home", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="idArticolo" value="@item.ID" />
+                            <button type="submit" class="btn btn-outline-success mx-2">Aggiungi al carrello</button>
+                            <select name="quantita">
+                                @for (int i = 1; i <= 10; i++)
+                                {
+                                    <option value="@i">@i</option>
+                                }
+                            </select>
+                        }
+
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>

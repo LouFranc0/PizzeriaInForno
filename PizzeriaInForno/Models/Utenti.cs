@@ -1,38 +1,41 @@
-﻿
-namespace PizzeriaInForno.Models
+﻿namespace PizzeriaInForno7.Models
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
 
     [Table("Utenti")]
     public partial class Utenti
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Utenti()
         {
             Ordini = new HashSet<Ordini>();
         }
 
-        public int Id { get; set; }
+        public int ID { get; set; }
 
-        [Required(ErrorMessage = "Devi inserire l'Username.")]
-        [StringLength(100, ErrorMessage = "L'Username può avere massimo 100 caratteri.")]
+        [Required(ErrorMessage = "Inserisci l'Username")]
+        [StringLength(50)]
         public string Username { get; set; }
 
-        [Required(ErrorMessage = "Devi inserire la Password.")]
-        [StringLength(50, ErrorMessage = "La password può avere massimo 50 caratteri.")]
+        [Required(ErrorMessage = "Inserisci la Password")]
+        [StringLength(255)]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Devi inserire l'Email.")]
-        [StringLength(200, ErrorMessage = "L'Email può avere massimo 200 caratteri.")]
+        [Required]
+        [StringLength(255)]
         public string Email { get; set; }
 
-        public int RuoloId { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string Nome { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [Required]
+        [StringLength(50)]
+        public string Ruolo { get; set; }
+
         public virtual ICollection<Ordini> Ordini { get; set; }
-
-        public virtual Ruoli Ruoli { get; set; }
     }
 }

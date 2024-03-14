@@ -141,20 +141,20 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ArticoliController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ShopController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AggRuoli.cs" />
+    <Compile Include="Models\Amministratori.cs" />
     <Compile Include="Models\Articoli.cs" />
-    <Compile Include="Models\InFornoContext.cs" />
+    <Compile Include="Models\DettagliArticoli.cs" />
+    <Compile Include="Models\InFornoDbContext.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\Ordini.cs" />
-    <Compile Include="Models\OrdiniArticoli.cs" />
-    <Compile Include="Models\Ruoli.cs" />
     <Compile Include="Models\Utenti.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -184,6 +184,8 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Compile Include="Models\ManagerRuoli.cs" />
+    <Compile Include="Models\OrdiniArticoli.cs" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -209,11 +211,15 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Articoli\Index.cshtml" />
+    <Content Include="Views\Articoli\Create.cshtml" />
+    <Content Include="Views\Articoli\Edit.cshtml" />
+    <Content Include="Views\Articoli\Delete.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Admin\" />
-    <Folder Include="Views\Auth\" />
     <Folder Include="Views\Shop\" />
     <Folder Include="Views\Values\" />
   </ItemGroup>

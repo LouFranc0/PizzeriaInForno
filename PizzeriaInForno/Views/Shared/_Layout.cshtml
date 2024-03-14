@@ -1,37 +1,76 @@
-﻿<!DOCTYPE html>
+﻿﻿﻿@{
+    var authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+}
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Applicazione ASP.NET</title>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - In Forno</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
+<body style="background-color: #ff804f;">
+
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
         <div class="container">
-            @Html.ActionLink("Nome dell'applicazione", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <h3 class="text-white me-4">In Forno</h3>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Attiva/Disattiva spostamento" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Informazioni", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contatto", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link fw-bold" })</li>
+                    <li>@Html.ActionLink("Il mio ordine", "Dettagli", "Ordine", new { area = "" }, new { @class = "nav-link fw-bold" })</li>
                 </ul>
+                @if (authCookie != null)
+                {
+                    <ul class="navbar-nav">
+                        <li>
+                            <form action="@Url.Action("Index", "Articoli")" method="post">
+                                @Html.AntiForgeryToken();
+                                <button type="submit" class="btn btn-outline-warning text-white fw-bold">Articoli</button>
+                            </form>
+                        </li>
+                        <li>
+                            <form action="@Url.Action("Logout", "Login")" method="post">
+                                @Html.AntiForgeryToken();
+                                <button type="submit" class="btn btn-outline-danger text-white fw-bold">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+
+                }
+                @if (authCookie == null)
+                {
+                    <ul class="navbar-nav">
+                        <li>
+                            <form action="@Url.Action("Register", "Account")" method="post">
+                                @Html.AntiForgeryToken();
+                                <button type="submit" class="btn btn-outline-primary text-white fw-bold">Register</button>
+                            </form>
+                        </li>
+                        <li>
+                            <form action="@Url.Action("Index", "Login")" method="post">
+                                @Html.AntiForgeryToken();
+                                <button type="submit" class="btn btn-outline-success text-white fw-bold">Login</button>
+                            </form>
+                        </li>
+                    </ul>
+
+                }
             </div>
         </div>
     </nav>
-    <div class="container body-content">
+    <div class="container body-content my-5">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Applicazione ASP.NET</p>
-        </footer>
     </div>
+
+    <footer class="text-center text-white bg-dark fixed-bottom">
+        <p class="fw-bold m-0 py-2">&copy; @DateTime.Now.Year - In Forno</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
