@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,12 +6,12 @@ using System.Web.Mvc;
 
 namespace PizzeriaInForno.Controllers
 {
-    public class HomeController : Controller
+    [Authorize(Roles = "Admin")]
+    public class AdminController : Controller
     {
+        // GET: Admin
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
-
             return View();
         }
     }
