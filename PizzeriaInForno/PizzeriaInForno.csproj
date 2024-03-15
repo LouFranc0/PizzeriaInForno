@@ -220,7 +220,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Shop\" />
     <Folder Include="Views\Values\" />
   </ItemGroup>
   <ItemGroup>

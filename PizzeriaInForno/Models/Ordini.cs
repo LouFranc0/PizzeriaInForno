@@ -1,41 +1,44 @@
 ﻿namespace PizzeriaInForno.Models
 {
+
+    using PizzeriaInForno7.Models;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Utenti")]
-    public partial class Utenti
+    [Table("Ordini")]
+    public partial class Ordini
     {
-        public Utenti()
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Ordini()
         {
-            Ordini = new HashSet<Ordini>();
+            OrdiniArticoli = new HashSet<OrdiniArticoli>();
         }
 
         public int ID { get; set; }
 
-        [Required(ErrorMessage = "Inserisci l'Username")]
-        [StringLength(50)]
-        public string Username { get; set; }
+        public int? IDUtente { get; set; }
 
-        [Required(ErrorMessage = "Inserisci la Password")]
-        [StringLength(255)]
-        public string Password { get; set; }
-
-        [Required]
-        [StringLength(255)]
-        public string Email { get; set; }
-
-        [Required]
-        [StringLength(100)]
-        public string Nome { get; set; }
+        public DateTime? DataOrdine { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string Ruolo { get; set; }
+        public string Stato { get; set; }
 
-        public virtual ICollection<Ordini> Ordini { get; set; }
+        [StringLength(255)]
+        public string Note { get; set; }
+
+        [Required]
+        [StringLength(255)]
+        public string Indirizzo { get; set; }
+
+        public decimal Totale { get; set; }
+
+        public virtual Utenti Utenti { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrdiniArticoli> OrdiniArticoli { get; set; }
     }
 }
