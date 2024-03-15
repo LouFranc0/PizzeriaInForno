@@ -23,12 +23,16 @@ namespace PizzeriaInForno.Controllers
         {
             if (ModelState.IsValid)
             {
-                dbContext.Utenti.Add(utente);
+                object value = dbContext.Utenti.Add(utente);
                 dbContext.SaveChanges();
                 return RedirectToAction("Index", "Home");
             }
 
             return View(utente);
         }
+    }
+
+    public class Utenti
+    {
     }
 }
