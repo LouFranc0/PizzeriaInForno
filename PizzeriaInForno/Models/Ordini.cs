@@ -40,5 +40,6 @@
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrdiniArticoli> OrdiniArticoli { get; set; }
+        public ICollection<object> DettagliOrdine { get; internal set; }
     }
 }

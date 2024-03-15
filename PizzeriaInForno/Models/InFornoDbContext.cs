@@ -4,14 +4,17 @@ using System.Data.Entity;
 using System.Data;
 using System.Linq;
 using System.Web;
+using PizzeriaInForno7.Models;
 
 namespace PizzeriaInForno.Models
 {
     public class InFornoDbContext
     {
-        public partial class InFornoDbContext : DbContext
+        public object Articoli { get; internal set; }
+
+        public partial class InFornoContext : DbContext
         {
-            public InFornoDbContext()
+            public InFornoContext()
                 : base("name=InFornoDbContext")
             {
             }
